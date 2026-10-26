@@ -2,42 +2,81 @@ class ItemRepository:
 
     def __init__(self):
         self.categories = [
-            {"id": 1, "name": "Pemrograman"},
-            {"id": 2, "name": "Basis Data"},
-            {"id": 3, "name": "Fiksi & Sastra"},
+            {"id": 1, "name": "Makanan"},
+            {"id": 2, "name": "Minuman"},
+            {"id": 3, "name": "Pakaian"},
+            {"id": 4, "name": "Aksesori"},
         ]
         self.items = [
             {
                 "id": 1,
-                "title": "Pemrograman Python Dasar",
-                "author": "Guido van Rossum",
-                "category": "Pemrograman",
-                "price": 95000,
-                "stock": 10,
+                "name": "Keripik Pisang",
+                "category": "Makanan",
+                "price": 15000,
+                "stock": 20,
             },
             {
                 "id": 2,
-                "title": "Dasar-Dasar Backend & REST API",
-                "author": "Sony Panca Budiarto",
-                "category": "Pemrograman",
-                "price": 120000,
-                "stock": 5,
-            },
-            {
-                "id": 3,
-                "title": "Mastering MySQL & NoSQL",
-                "author": "Riki Pratama",
-                "category": "Basis Data",
-                "price": 85000,
+                "name": "Keripik Singkong",
+                "category": "Makanan",
+                "price": 12000,
                 "stock": 15,
             },
             {
+                "id": 3,
+                "name": "Kopi Robusta",
+                "category": "Minuman",
+                "price": 35000,
+                "stock": 10,
+            },
+            {
                 "id": 4,
-                "title": "Laskar Pelangi",
-                "author": "Andrea Hirata",
-                "category": "Fiksi & Sastra",
+                "name": "Teh Celup Herbal",
+                "category": "Minuman",
+                "price": 20000,
+                "stock": 25,
+            },
+            {
+                "id": 5,
+                "name": "Batik Banyuwangi",
+                "category": "Pakaian",
+                "price": 150000,
+                "stock": 5,
+            },
+            {
+                "id": 6,
+                "name": "Kaos Etnik",
+                "category": "Pakaian",
                 "price": 65000,
-                "stock": 20,
+                "stock": 12,
+            },
+            {
+                "id": 7,
+                "name": "Gantungan Kunci UD",
+                "category": "Aksesori",
+                "price": 10000,
+                "stock": 50,
+            },
+            {
+                "id": 8,
+                "name": "Tas Anyaman",
+                "category": "Aksesori",
+                "price": 45000,
+                "stock": 8,
+            },
+            {
+                "id": 9,
+                "name": "Bagiak Khas Bwi",
+                "category": "Makanan",
+                "price": 18000,
+                "stock": 30,
+            },
+            {
+                "id": 10,
+                "name": "Dompet Batik",
+                "category": "Aksesori",
+                "price": 25000,
+                "stock": 15,
             },
         ]
 
@@ -62,7 +101,7 @@ class ItemRepository:
     def create(self, data):
         new_item = {
             "id": len(self.items) + 1,
-            "title": data["title"],
+            "name": data["name"],
             "author": data.get("author", "-"),
             "category": data.get("category", "Umum"),
             "price": data["price"],
@@ -75,8 +114,7 @@ class ItemRepository:
         item = self.get_by_id(item_id)
         if not item:
             return None
-        item["title"] = data.get("title", item["title"])
-        item["author"] = data.get("author", item["author"])
+        item["name"] = data.get("name", item["name"]) # Ganti title ke name
         item["category"] = data.get("category", item["category"])
         item["price"] = data.get("price", item["price"])
         item["stock"] = data.get("stock", item["stock"])
